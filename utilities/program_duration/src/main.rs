@@ -5,13 +5,13 @@ use serde::{Deserialize, Serialize};
 use std::{fs::File, io::Read};
 
 extern crate chrono;
-// use chrono::{Duration};
+use chrono::{Duration, NaiveTime};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct DurationEntry {
     title: String,
     date: String,
-    duration: u8,
+    duration: i64,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -26,17 +26,24 @@ fn main()  {
     let mut s = String::new();
     f.read_to_string(&mut s).expect("Unable to read file");
 
-    let program: DurationProgram  = match serde_yaml::from_str(&s) {
+    let program: DurationProgram = match serde_yaml::from_str(&s) {
         Ok(program) => program,
-        Err(_) => panic!("could not parse yaml"),
+        Err(_)      => panic!("could not parse yaml"),
     };
 
     println!("{:?}", program);
 
+    let mut prev_time: NaiveTime = match NaiveTime::parse_from_str(&program.program_start_time, "%H:%M") {
+        Ok(prev_time) => prev_time,
+        Err(_)        => panic!("could not parse time"),
+    };
 
-    let start_time = program.program_start_time;
-    println!("{}", start_time);
+    println!("{}", prev_time);
 
-    // let thirty_minutes_from_now = now + Duration::minutes(30);
-
+    for entry in program.program {
+        println!("title: {}", entry.title);
+        println!("start_time: {}", prev_time.format("%H:%M"));
+        prev_time = prev_time + Duration::minutes(entry.duration);
+        println!("end_time: {}", prev_time.format("%H:%M"));
+    }
 }
