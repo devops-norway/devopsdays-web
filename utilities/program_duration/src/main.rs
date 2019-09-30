@@ -4,8 +4,8 @@ extern crate serde_derive;
 use serde::{Deserialize, Serialize};
 use std::{fs::File, io::Read};
 
-// extern crate chrono;
-// use chrono::{Duration, Utc};
+extern crate chrono;
+// use chrono::{Duration};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct DurationEntry {
@@ -22,23 +22,21 @@ struct DurationProgram {
 
 
 fn main()  {
-    // let now = Utc::now();
-    // println!("{}", now);
-    // let thirty_minutes_from_now = now + Duration::minutes(30);
-    // println!("{}", thirty_minutes_from_now);
-
     let mut f = File::open("something.yaml").expect("Unable to open file");
     let mut s = String::new();
     f.read_to_string(&mut s).expect("Unable to read file");
 
-    let _deserialized_program: Result<DurationProgram, _> = serde_yaml::from_str(&s);
-    println!("{:?}", _deserialized_program);
+    let program: DurationProgram  = match serde_yaml::from_str(&s) {
+        Ok(program) => program,
+        Err(_) => panic!("could not parse yaml"),
+    };
 
-    // // // Index access for map & array
-    // // assert_eq!(doc["foo"][0].as_str().unwrap(), "list1");
-    // // assert_eq!(doc["bar"][1].as_f64().unwrap(), 2.0);
+    println!("{:?}", program);
 
-    // // // Chained key/array access is checked and won't panic,
-    // // // return BadValue if they are not exist.
-    // // assert!(doc["INVALID_KEY"][100].is_badvalue());
+
+    let start_time = program.program_start_time;
+    println!("{}", start_time);
+
+    // let thirty_minutes_from_now = now + Duration::minutes(30);
+
 }
