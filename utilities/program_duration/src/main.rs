@@ -41,9 +41,9 @@ fn main()  {
     println!("{}", prev_time);
 
     for entry in program.program {
-        println!("title: {}", entry.title);
-        println!("start_time: {}", prev_time.format("%H:%M"));
+        println!("- title: {}", entry.title);
+        println!("  start_time: {}", prev_time.format("%H:%M"));
         prev_time = prev_time + Duration::minutes(entry.duration);
-        println!("end_time: {}", prev_time.format("%H:%M"));
+        println!("  end_time: {}", prev_time.format("%H:%M"));
     }
 }
