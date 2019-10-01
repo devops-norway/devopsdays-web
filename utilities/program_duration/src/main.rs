@@ -10,6 +10,8 @@ use chrono::{Duration, NaiveTime};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct DurationEntry {
     title: String,
+    #[serde(rename = "type")]
+    type_field: String,
     date: String,
     duration: i64,
 }
@@ -42,6 +44,7 @@ fn main()  {
 
     for entry in program.program {
         println!("- title: {}", entry.title);
+        println!("  type: {}", entry.type_field);
         println!("  start_time: {}", prev_time.format("%H:%M"));
         prev_time = prev_time + Duration::minutes(entry.duration);
         println!("  end_time: {}", prev_time.format("%H:%M"));
