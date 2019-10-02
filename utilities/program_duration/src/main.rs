@@ -34,7 +34,7 @@ struct DurationProgram {
 fn main()  {
     // let args = Cli::from_args();
 
-    let mut f = File::open("day2.yml").expect("Unable to open file");
+    let mut f = File::open("day1.yml").expect("Unable to open file");
     let mut s = String::new();
     f.read_to_string(&mut s).expect("Unable to read file");
 
@@ -52,11 +52,11 @@ fn main()  {
     println!("program:");
 
     for entry in program.program {
-        println!("  - title: {}", entry.title);
+        println!("  - title: \"{}\"", entry.title);
         println!("    type: {}", entry.type_field);
-        println!("    date: {}", entry.date);
-        println!("    start_time: {}", prev_time.format("%H:%M"));
+        println!("    date: \"{}\"", entry.date);
+        println!("    start_time: \"{}\"", prev_time.format("%H:%M"));
         prev_time = prev_time + Duration::minutes(entry.duration);
-        println!("    end_time: {}", prev_time.format("%H:%M"));
+        println!("    end_time: \"{}\"", prev_time.format("%H:%M"));
     }
 }
