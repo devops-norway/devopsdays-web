@@ -33,20 +33,19 @@ fn main()  {
         Err(_)      => panic!("could not parse yaml"),
     };
 
-    println!("{:?}", program);
 
     let mut prev_time: NaiveTime = match NaiveTime::parse_from_str(&program.program_start_time, "%H:%M") {
         Ok(prev_time) => prev_time,
         Err(_)        => panic!("could not parse time"),
     };
 
-    println!("{}", prev_time);
+    println!("program:");
 
     for entry in program.program {
-        println!("- title: {}", entry.title);
-        println!("  type: {}", entry.type_field);
-        println!("  start_time: {}", prev_time.format("%H:%M"));
+        println!("  - title: {}", entry.title);
+        println!("    type: {}", entry.type_field);
+        println!("    start_time: {}", prev_time.format("%H:%M"));
         prev_time = prev_time + Duration::minutes(entry.duration);
-        println!("  end_time: {}", prev_time.format("%H:%M"));
+        println!("    end_time: {}", prev_time.format("%H:%M"));
     }
 }
