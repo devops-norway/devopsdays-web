@@ -1,0 +1,83 @@
+---
+program_start_time: "08:00"
+program:
+  - title: "Registration, Breakfast, Sponsors"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 60
+  - title: "Opening Welcome"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 15
+  - title: "jan-de-vries"
+    type: talk
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Sponsors"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 10
+  - title: "ramez-hanna"
+    type: talk
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Break"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 15
+  - title: "daniela-soares-cruzes"
+    type: talk
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Sponsors"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 10
+  - title: "krikor-maroukian"
+    type: talk
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "kat-liu"
+    type: talk
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Lunch"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 70
+  - title: "Ignites"
+    type: ignite
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Open Space Opening"
+    type: open-space
+    date: 2019-10-22T00:00:00+02:00
+    duration: 30
+  - title: "Open Space #1"
+    type: open-space
+    date: 2019-10-22T00:00:00+02:00
+    duration: 45
+  - title: "Break"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 15
+  - title: "Open Space #2"
+    type: open-space
+    date: 2019-10-22T00:00:00+02:00
+    duration: 45
+  - title: "Break"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 15
+  - title: "Open Space #3"
+    type: open-space
+    date: 2019-10-22T00:00:00+02:00
+    duration: 45
+  - title: "Close Day"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 15
+  - title: "Evening event"
+    type: custom
+    date: 2019-10-22T00:00:00+02:00
+    duration: 330
