@@ -7,6 +7,14 @@ use std::{fs::File, io::Read};
 extern crate chrono;
 use chrono::{Duration, NaiveTime};
 
+// use structopt::StructOpt;
+// #[derive(StructOpt)]
+// struct Cli {
+//     pattern: String,
+//     #[structopt(parse(from_os_str))]
+//     path: std::path::PathBuf,
+// }
+
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct DurationEntry {
     title: String,
@@ -24,7 +32,9 @@ struct DurationProgram {
 
 
 fn main()  {
-    let mut f = File::open("something.yaml").expect("Unable to open file");
+    // let args = Cli::from_args();
+
+    let mut f = File::open("day2.yml").expect("Unable to open file");
     let mut s = String::new();
     f.read_to_string(&mut s).expect("Unable to read file");
 
@@ -44,6 +54,7 @@ fn main()  {
     for entry in program.program {
         println!("  - title: {}", entry.title);
         println!("    type: {}", entry.type_field);
+        println!("    date: {}", entry.date);
         println!("    start_time: {}", prev_time.format("%H:%M"));
         prev_time = prev_time + Duration::minutes(entry.duration);
         println!("    end_time: {}", prev_time.format("%H:%M"));
